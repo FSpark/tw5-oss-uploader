@@ -1,0 +1,12 @@
+{
+	"tiddlers": [
+		{
+			"file": "aliyun-oss-sdk.min.js",
+			"fields": {
+				"type": "application/javascript",
+				"title": "$:/plugins/FSpark/file-uploads-Aliyun-OSS/aliyun-oss-sdk.min.js",
+				"module-type": "library"
+			}
+		}
+	]
+}

@@ -1,0 +1,12 @@
+title: $:/plugins/FSpark/file-uploads-Aliyun-OSS/settings
+
+Please configure the Aliyun-OSS settings in the [[Aliyun-OSS Saver settings|$:/core/ui/ControlPanel/Saving/Aliyun-OSS]].
+
+[[Aliyun-OSS upload path relative to root|$:/config/file-uploads/Aliyun-OSS/uploadpath]]: 
+<$edit-text tiddler="$:/config/file-uploads/Aliyun-OSS/uploadpath" field="text" tag="input" />
+
+|AccessKeyId |<$edit-text tiddler="$:/AliyunOSS/AccessKeyId" default="" tag="input"/> |
+|AccessKeySecret |<$password name="AliyunOSS-KeySecret"/> |
+|Region |<$edit-text tiddler="$:/AliyunOSS/Region" default="" tag="input"/> |
+|Bucket |<$edit-text tiddler="$:/AliyunOSS/Bucket" default="" tag="input"/> |
+|Path |<$edit-text tiddler="$:/AliyunOSS/Path" default="" tag="input"/> |

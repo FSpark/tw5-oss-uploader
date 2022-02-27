@@ -1,0 +1,11 @@
+{
+	"title": "$:/plugins/FSpark/file-uploads-Aliyun-OSS",
+	"description": "Aliyun OSS uploader for uploading binary files to external storage",
+	"name": "File Uploads: Aliyun OSS",
+	"author": "FSpark",
+	"core-version": ">=5.1.23",
+	"plugin-priority": 0,
+	"list": "readme settings license",
+	"parent-plugin": "$:/plugins/commons/file-uploads",
+	"version": "0.1.2"
+}
