@@ -1,0 +1,30 @@
+caption: 随阿里云文件一起删除
+created: 20220223085139665
+description: 随阿里云文件一起删除
+modified: 20220227093153446
+revision: 0
+tags: OSS
+title: $:/plugins/FSpark/file-uploads-Aliyun-OSS/ui/Buttons/remove-img-markup
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+\define myregexp3(title) ^\[img.*\[$(listItem)$\]\]$
+<$list filter="[<listItem>tag[AliyunAssets]]">
+<$list filter="[<storyTiddler>get[text]search-replace:gm:regexp<myregexp3>,[]]" variable="replaced">
+<$button tooltip="从文本中移除图像" aria-label="从文本中移除图像" class=<<tv-config-toolbar-class>>>
+<$list filter="[<tv-config-toolbar-icons>match[yes]]">
+{{$:/core/images/delete-button}}
+</$list>
+<$list filter="[<tv-config-toolbar-text>match[yes]]">
+<span class="tc-btn-text">
+<$text text="从文本中移除图像"/>
+</span>
+</$list>
+<$action-sendmessage
+	$message="tm-edit-text-operation"
+	$param="replace-all"
+	text=<<replaced>>
+/>
+</$button>
+</$list>
+</$list>

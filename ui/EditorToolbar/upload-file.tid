@@ -1,0 +1,16 @@
+caption: 上传图片
+condition: [<targetTiddler>!has[type]] [<targetTiddler>type[text/vnd.tiddlywiki]]
+created: 20220220123605483
+description: 上传图片
+icon: $:/plugins/FSpark/file-uploads-Aliyun-OSS/ui/Imgs/file-upload-line
+modified: 20220227085140956
+revision: 0
+shortcuts: ((picture))
+tags: $:/tags/EditorToolbar OSS
+title: $:/plugins/FSpark/file-uploads-Aliyun-OSS/ui/EditorToolbar/upload-file
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+<$bwrap importTitle=<<importTitle>> autoOpenOnImport="no" contentTypesFilter={{$:/config/Editor/ImportContentTypesFilter}} actions=<<importFileActions>>>
+<$browse multiple="true" message="tm-browse-wrap">
+</$bwrap>

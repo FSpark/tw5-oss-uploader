@@ -1,0 +1,12 @@
+caption: {{$:/language/Buttons/Picture/Caption}}
+condition: [<targetTiddler>!has[type]] [<targetTiddler>type[text/vnd.tiddlywiki]]
+created: 20220223021633238
+description: 查看该条目下图片
+dropdown: $:/plugins/FSpark/file-uploads-Aliyun-OSS/ui/EditorToolbar/ref-picture-dropdown
+icon: $:/core/images/picture
+modified: 20220223084441096
+revision: 0
+tags: $:/tags/EditorToolbar OSS
+title: $:/plugins/FSpark/file-uploads-Aliyun-OSS/ui/EditorToolbar/ref-picture
+type: text/vnd.tiddlywiki
+

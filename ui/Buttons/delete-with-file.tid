@@ -1,0 +1,24 @@
+caption: 随阿里云文件一起删除
+condition: [<currentTiddler>is[image]] -[<currentTiddler>type[image/svg+xml]]
+created: 20220222133339962
+description: 随阿里云文件一起删除
+modified: 20220227093324257
+revision: 0
+tags: $:/tags/ViewToolbar OSS
+title: $:/plugins/FSpark/file-uploads-Aliyun-OSS/ui/Buttons/delete-with-file
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+<$list filter="[<currentTiddler>tag[AliyunAssets]]">
+<$button tooltip="随阿里云文件一起删除" aria-label="随阿里云文件一起删除" class=<<tv-config-toolbar-class>>>
+<$list filter="[<tv-config-toolbar-icons>match[yes]]">
+{{$:/plugins/FSpark/file-uploads-Aliyun-OSS/ui/Imgs/delete-img-file}}
+</$list>
+<$list filter="[<tv-config-toolbar-text>match[yes]]">
+<span class="tc-btn-text">
+<$text text="随阿里云文件一起删除"/>
+</span>
+</$list>
+<$action-deletealiyun $tiddler=<<currentTiddler>>/>
+</$button>
+</$list>
