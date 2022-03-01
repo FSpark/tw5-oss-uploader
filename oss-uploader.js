@@ -18,12 +18,15 @@ Files are saved to the "files" directory in the root of repository, existing fil
 exports.name = "Aliyun-OSS";
 
 var OSSClient = require("$:/plugins/FSpark/file-uploads-Aliyun-OSS/aliyun-oss-client.js");
+var CompressorJS =  require("$:/plugins/FSpark/file-uploads-Aliyun-OSS/compressor.min.js");
+var utils = require("$:/plugins/FSpark/file-uploads-Aliyun-OSS/utils.js");
 
 exports.create = function(params) {
 	
 	var AliyunHelper = OSSClient;
-
-	if(!AliyunHelper.OSSInit())
+	
+	AliyunHelper.OSSInit()
+	if(!AliyunHelper.client)
 		return null;
 
 	return new AliyunOSSUploader(params,AliyunHelper);
@@ -35,7 +38,9 @@ function AliyunOSSUploader(params,AliyunHelper) {
 	this.logger = new $tw.utils.Logger("oss-uploader");
 	this.files = [];
 	this.logger.log("AliyunOSSUploader",params);	
-	
+	this.needImgCompress = $tw.wiki.getTiddlerText("$:/config/file-uploads/aliyun-oss/imgcompress","yes").trim() === "yes";
+	if(this.needImgCompress)
+		this.imgCompressConfig = $tw.wiki.getTiddlerData("$:/config/file-uploads/aliyun-oss/imgCompressConfig")
 };
 
 AliyunOSSUploader.prototype.initialize = function(callback) {
@@ -67,14 +72,44 @@ callback accepts two arguments:
 */
 AliyunOSSUploader.prototype.uploadFile = function(uploadItem,callback) {  
 	var self = this;
-		// uploadInfo = { title: uploadItem.title };
-	this.files.push({
-		filename: uploadItem.filename,
-		path: `${this._getFilePath()}/${uploadItem.filename}`,
-		content: uploadItem.getBlob(),
-		encoding: uploadItem.isBase64 ? "base64" : "utf8"
-	});		
-	callback(null,{ title: uploadItem.title });
+	// uploadInfo = { title: uploadItem.title };
+
+	var fileblob = uploadItem.getBlob();
+	var fileExtension = utils.imageTypeToExtension(fileblob.type);
+
+	function filesPush(content) {
+		self.files.push({
+			filename: uploadItem.filename,
+			path: `${self._getFilePath()}/${uploadItem.filename}`,
+			content: content,
+			encoding: uploadItem.isBase64 ? "base64" : "utf8"
+		});
+	}
+
+	if (this.needImgCompress && !utils.isInArray(fileExtension, ["", ".gif"])) {
+		new CompressorJS(fileblob, {
+			...self.imgCompressConfig,
+			success(result) {
+				$tw.notifier.display("$:/plugins/FSpark/file-uploads-Aliyun-OSS/ui/Notifications/Compressed",
+					{
+						variables: {
+							filename: uploadItem.filename,
+							oldsize: utils.bytesToSize(fileblob.size),
+							newsize: utils.bytesToSize(result.size),
+							ratio: ((fileblob.size - result.size) * 100 / fileblob.size).toPrecision(3) + '%'
+						}
+					});
+				filesPush(result);
+				callback(null, { title: uploadItem.title });
+			},
+			error(err) {
+				callback(err);
+			}
+		})
+	} else {
+		filesPush(fileblob);
+	}
+	
 };
 
 /*

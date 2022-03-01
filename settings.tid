@@ -1,12 +1,10 @@
 title: $:/plugins/FSpark/file-uploads-Aliyun-OSS/settings
 
-Please configure the Aliyun-OSS settings in the [[Aliyun-OSS Saver settings|$:/core/ui/ControlPanel/Saving/Aliyun-OSS]].
+Please configure the Image Compression settings in the [[Image Compression settings|$:/config/file-uploads/aliyun-oss/imgCompressConfig]].
 
-[[Aliyun-OSS upload path relative to root|$:/config/file-uploads/Aliyun-OSS/uploadpath]]: 
-<$edit-text tiddler="$:/config/file-uploads/Aliyun-OSS/uploadpath" field="text" tag="input" />
-
-|AccessKeyId |<$edit-text tiddler="$:/AliyunOSS/AccessKeyId" default="" tag="input"/> |
-|AccessKeySecret |<$password name="AliyunOSS-KeySecret"/> |
+|~AccessKeyId |<$edit-text tiddler="$:/AliyunOSS/AccessKeyId" default="" tag="input"/> |
+|~AccessKeySecret |<$password name="AliyunOSS-KeySecret"/> |
 |Region |<$edit-text tiddler="$:/AliyunOSS/Region" default="" tag="input"/> |
 |Bucket |<$edit-text tiddler="$:/AliyunOSS/Bucket" default="" tag="input"/> |
-|Path |<$edit-text tiddler="$:/AliyunOSS/Path" default="" tag="input"/> |
+|Path |<$edit-text tiddler="$:/config/file-uploads/aliyun-oss/uploadpath" default="" tag="input"/> |
+|~ImageCompression | <$checkbox tiddler="$:/config/file-uploads/aliyun-oss/imgcompress" field="text" checked="yes" unchecked="no"/> |
