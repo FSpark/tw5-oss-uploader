@@ -2,11 +2,11 @@ title: $:/plugins/FSpark/file-uploads-Aliyun-OSS/ui/Panel/ref-img-template
 type: text/vnd.tiddlywiki
 
 \whitespace trim
-<tr class="tc-relink-references">
-<td class="tc-relink-references-title">
+<tr class="fs-oss-ref">
+<td class="fs-oss-ref-title">
 <$link to=<<listItem>> tooltip=<<listItem>>/>
 </td>
-<td class="tc-relink-references-report">
+<td class="fs-oss-ref-operation">
 {{{ [<listItem>] ||$:/plugins/FSpark/file-uploads-Aliyun-OSS/ui/Buttons/delete-with-file }}}
 {{$:/plugins/FSpark/file-uploads-Aliyun-OSS/ui/Buttons/remove-img-markup}}
 </td>

@@ -1,0 +1,27 @@
+.fs-oss-ref-table {
+	width: 100%;
+	border: none;
+	border-color: currentColor;
+}
+.fs-oss-ref-operation {
+	display: flex;
+	flex-direction: row;
+}
+.fs-oss-ref {
+	max-width: 200px;
+}
+.fs-oss-ref-title a {
+	max-width: 200px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+td.fs-oss-ref-operation button {
+	min-width: 32px;
+	text-align: center;
+}
+td.fs-oss-ref-title a{
+	padding: 0;
+}
+.fs-oss-ref td {
+    border: none;
+}
